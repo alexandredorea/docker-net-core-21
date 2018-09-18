@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using App.ServiceLibrary;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.WebApi.Controllers
@@ -10,36 +7,18 @@ namespace App.WebApi.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        // GET api/values
+        private readonly IClassService _service;
+
+        public ValuesController(IClassService service)
+        {
+            _service = service;
+        }
+
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public void Get()
         {
-            return new string[] { "value1", "value2" };
+            _service.DoWork();
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }
