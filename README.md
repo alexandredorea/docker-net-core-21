@@ -1,2 +1,3 @@
-# docker-net-core-21
-How to create a docker image from net core 2.1 multi layer web app
+# Information
+
+How to create a docker image from an application that uses a nuget hosted on a VSTS private  feed
